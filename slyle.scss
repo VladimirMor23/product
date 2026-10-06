@@ -1,0 +1,313 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.grechen-fuemen-regular {
+  font-family: "Grechen Fuemen", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.center{
+    padding-left: calc(50% - 600px);
+    padding-right: calc(50% - 600px);
+}
+.header{
+    height: 76px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.header__phone-link {
+  font-weight: 600;
+  color: #b5b5b5;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.header__icon{
+    display: flex;  
+    align-items: center;
+    gap: 10px;
+}
+.header__phone-link:hover {
+  color: #fffcfc; /* акцентный цвет */
+}
+.header-logo{
+    text-decoration: none;
+    font-size: 25px;
+    color: #ede7e7;
+    font-family: "Grechen Fuemen", cursive;
+}
+.nav__item {
+  display: inline-block;
+  text-decoration: none;
+  color: rgba(181, 181, 181, 0.8);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 12px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav__item:hover {
+  color: rgba(255, 252, 252, 0.9);          /* акцентный цвет */
+  transform: scale(1.05);  /* увеличение на 5% */
+}
+.hero-pg{
+    background-image: url(./img/hego-pg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.main{
+    margin-top: 160px;
+    padding-bottom: 303px;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   
+    &__title{
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 70px;
+    max-width: 792px;
+    margin-bottom: 16px;
+    color: rgba(214, 214, 214, 0.5);
+    }
+    &__text{
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 30px;
+    color: rgba(181, 181, 181, 0.7);
+    font-family: "Grechen Fuemen", cursive;
+    }
+    &__link{
+        display: inline-block;
+        padding: 10px 28px;
+        background-color: #d32f2f; /* тёплый красно‑оранжевый, «аппетитный» */
+        color: #ede7e7 ;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 19px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        border: 2px solid rgb(241, 241, 241);
+    }
+    &__link:hover {
+        background-color: #b71c1c; /* темнее при наведении */
+        transform: translateY(-2px);
+        color: #fffcfc;          /* акцентный цвет */
+        transform: scale(1.05); /* лёгкий подъём */
+}
+
+    &__link:active {
+        transform: translateY(0);
+}
+}
+.main__titletext{
+    font-family: "Grechen Fuemen", cursive;
+}
+
+// --------Секция КАТАЛОГ-----
+.catalog{
+    background-image: url(./img/catalog.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: space-around;
+    padding-bottom: 80px;
+}
+.catalog__cardtitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.catalog__basket{
+        padding: 10px 28px;
+        background-color: #c73a3a; /* тёплый красно‑оранжевый, «аппетитный» */
+        font-size: 18px;
+        border-radius: 80px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        border: 2px solid rgb(241, 241, 241);
+
+}
+.catalog__basket {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  background-color: #a18e8e;
+}
+.catalog__basket {
+  position: fixed;          /* главное свойство: фиксирует элемент относительно окна */
+  bottom: 460px;
+    right: 70px;          /* отступ справа */
+  z-index: 999;             /* чтобы была поверх остального контента */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.catalog__basket:hover {
+  color: #000;
+}
+
+.basket-icon {
+  font-size: 24px;
+}
+
+.basket-count {
+  background: #d9534f;
+  color: #fff;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  min-width: 20px;
+}
+
+
+.catalog__basket:hover {
+  color: #000;
+}
+/* Контейнер карточки — ничего не меняет, только обрезает лишнее */
+.catalog__card {
+  position: relative;
+  overflow: hidden;            /* самое важное: обрезает всё, что вылезает */
+  border-radius: 30px;
+}
+
+/* Сама картинка — задаём размер, чтобы сетка не прыгала */
+.catalog__img {
+  width: 100%;
+  height: 200px;  
+  cursor: pointer;             /* фиксированная высота — критично для сетки */
+  object-fit: cover;           /* заполняет блок, не искажая фото */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* плавная анимация */
+  display: block;               /* убирает лишние отступы у img */
+}
+
+/* При наведении на карточку — увеличиваем только картинку */
+.catalog__card:hover .catalog__img {
+  transform: scale(1.05);      /* увеличение на 15% */
+}
+
+
+
+.basket-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;          /* важно: ширина = высоте */
+  height: 56px;
+  background: #d63d3d;   /* цвет фона */
+  color: #fff;         /* цвет иконки */
+  border-radius: 50%;  /* делает круг */
+  font-size: 32px;     /* размер иконки внутри */
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.basket-count {
+  background: #e15550;
+  color: #fff;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 70%;
+  min-width: 20px;
+  display: inline-block;
+}
+
+/* Если корзина пустая — можно скрыть счётчик или сделать его прозрачным, но обычно оставляют «0» */
+.basket-count.hidden {
+  display: none;
+}
+
+.catalog__meat{
+    font-weight: 600;
+    font-size: 64px;
+    max-width: 900px;
+    width: 100%;
+    color: rgba(214, 214, 214, 0.5);
+    font-family: "Grechen Fuemen", cursive;
+}
+.catalog__card{
+    max-width: 329px;
+    width: 100%;
+    grid-column: span 4;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.catalog__img{
+     background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 329px;
+    width: 100%;
+    height: 329px;
+    border-radius: 40px;
+}
+.catalog__title{
+    font-weight: 300;
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgba(214, 214, 214, 0.5);
+}
+.catalog__price{
+    font-weight: 300;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    font-size: 24px;
+    color: rgba(214, 214, 214, 0.5);
+}
+.catalog__info{
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(214, 214, 214, 0.5);
+}
+.catalog__kg{
+    font-weight: 300;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    color: rgba(214, 214, 214, 0.5);
+}
+.btn-add-to-cart {
+   background-color: #d32f2f; /* тёплый красно‑оранжевый, «аппетитный» */
+  color: #ede7e7 ;
+  font-size: 18px;
+   font-weight: 600;
+   border-radius: 19px;
+  border: 2px solid rgb(241, 241, 241);
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-add-to-cart.added {
+  background: #535854; /* зелёный для «добавлено» */
+  transform: scale(0.9);
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="slyle.css">
+  <title>Корзина</title>
+</head>
+<body>
+    <div> 
+  <h1>Корзина</h1>
+  <div class="cart-list"></div>
+  <p class="cart-total"></p>
+  </div>
+  <div>
+    <h1>Оформление заказа</h1>
+
+<div class="order-items"></div>   <!-- сюда JS выведет состав корзины -->
+<p class="order-total"></p>       <!-- а сюда — итоговую сумму -->
+
+<form id="order-form" action="https://formspree.io/f/xljgdgan" method="POST"> <!--Сайт где получать https://formspree.io/ нужно зарегистрироваться на почту и получать заказ-->
+  <label for="order-name">Имя</label>
+  <input type="text" id="order-name" name="Имя" required>
+
+  <label for="order-phone">Телефон</label>
+  <input type="tel" id="order-phone" name="Телефон" required>
+
+  <label for="order-address">Адрес доставки</label>
+  <input type="text" id="order-address" name="Адрес" required>
+
+  <input type="hidden" name="Заказ" id="order-details">
+  <input type="hidden" name="Сумма" id="order-sum">
+
+  <button type="submit">Оформить заказ</button>
+  <p id="order-status"></p>   
+</form>
+  
+  </div>
+  <script src="cart.js"></script>
+  
+</body>
+</html>
