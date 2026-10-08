@@ -1,0 +1,27 @@
+@media (max-width: 1400px) {
+  .center {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  .center {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (min-width: 768px) and (max-width: 833px) {
+    .center{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+        .main__img {
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 90px;
+        position: relative;
+        top: -90px;
+        left: 290px;
+}
+   
+}
