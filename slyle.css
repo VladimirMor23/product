@@ -345,7 +345,7 @@
     width: 70px;
     position: relative;
     top: -90px;
-    left: 215px;
+    left: 200px;
   }
   .catalog__card {
     max-width: 249px;
@@ -536,7 +536,7 @@ svg a:hover {
   background-repeat: no-repeat;
   width: 30px;
   position: absolute;
-  left: 230px;
+  left: 210px;
 }
 
 .main__palece {
@@ -1109,7 +1109,7 @@ svg a:hover {
     width: 70px;
     position: relative;
     top: -90px;
-    left: 215px;
+    left: 200px;
   }
   .catalog__card {
     max-width: 249px;
