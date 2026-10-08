@@ -342,10 +342,10 @@
   .main__img {
     background-size: cover;
     background-repeat: no-repeat;
-    width: 90px;
+    width: 70px;
     position: relative;
     top: -90px;
-    left: 240px;
+    left: 215px;
   }
   .catalog__card {
     max-width: 249px;
@@ -1106,10 +1106,10 @@ svg a:hover {
   .main__img {
     background-size: cover;
     background-repeat: no-repeat;
-    width: 90px;
+    width: 70px;
     position: relative;
     top: -90px;
-    left: 240px;
+    left: 215px;
   }
   .catalog__card {
     max-width: 249px;
