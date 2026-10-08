@@ -1,29 +1,48 @@
+@use 'cart';
+@use 'mobil';
+@use 'tablet';
+
+
 *{
     margin: 0;
     padding: 0;
-}
-html {
-  scroll-behavior: smooth;
-}
-
-.grechen-fuemen-regular {
-  font-family: "Grechen Fuemen", cursive;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .center{
     padding-left: calc(50% - 600px);
     padding-right: calc(50% - 600px);
 }
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+.grechen-fuemen-regular {
+  font-family: "Grechen Fuemen", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 .header{
-    height: 76px;
+      height: 76px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    align-content: flex-end
     
 }
+
+svg a {
+  transition: opacity 0.2s;
+}
+svg a:hover {
+  opacity: 0.8;
+}
+
 .header__phone-link {
   font-weight: 600;
   color: #b5b5b5;
@@ -60,9 +79,15 @@ html {
   transform: scale(1.05);  /* увеличение на 5% */
 }
 .hero-pg{
-    background-image: url(./img/hego-pg.jpg);
+    background: linear-gradient(90deg, #000000,#272021,#37322f);
     background-size: cover;
     background-repeat: no-repeat;
+   
+}
+.header__icons{
+  background-size: cover;
+    background-repeat: no-repeat;
+    width: 30px;
 }
 .main{
     margin-top: 160px;
@@ -75,30 +100,32 @@ html {
    
     &__title{
     font-weight: 600;
-    font-size: 64px;
-    line-height: 70px;
+     font-size: clamp(28px, 5vw, 65px);
+    line-height: 60px;
     max-width: 792px;
     margin-bottom: 16px;
     color: rgba(214, 214, 214, 0.5);
     }
     &__text{
-    font-size: 24px;
+    font-size: clamp(18px, 2vw, 24px);
     line-height: 29px;
     margin-bottom: 30px;
     color: rgba(181, 181, 181, 0.7);
     font-family: "Grechen Fuemen", cursive;
     }
     &__link{
-        display: inline-block;
-        padding: 10px 28px;
-        background-color: #d32f2f; /* тёплый красно‑оранжевый, «аппетитный» */
-        color: #ede7e7 ;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: 600;
-        border-radius: 19px;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        border: 2px solid rgb(241, 241, 241);
+    padding: 10px 47px;
+    background-color: #d32f2f;
+    color: #ede7e7;
+    display: flex;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 19px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 2px solid rgb(241, 241, 241);
+    align-items: center;
     }
     &__link:hover {
         background-color: #b71c1c; /* темнее при наведении */
@@ -114,12 +141,129 @@ html {
 .main__titletext{
     font-family: "Grechen Fuemen", cursive;
 }
+.main__palece{
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 30px;
+ position: absolute;
+    left: 230px;
+}
+.main__palece {
+  display: inline-block;
+  animation: float-up-down 2s ease-in-out infinite;
+}
+
+@keyframes float-up-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px); /* высота движения */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.main__img{
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 90px;
+  position: relative;
+  top: -90px;
+    left: 380px;
+}
+.main__img {
+  display: inline-block;
+  /* анимация: имя | длительность | плавность | повтор */
+  animation: move-right-left 2s ease-in-out infinite alternate;
+}
+
+@keyframes move-right-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(20px); /* сдвиг вправо на 20px */
+  }
+}
+
+/* ----------- КНОПКА ПРОДУКЦИЯ -----*/
+/* Контейнер */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Кнопка «Продукция»  */
+
+
+/* Скрытое меню */
+.dropdown__menu {
+  position: absolute;
+  top: 100%;                  /* раскрывается под кнопкой */
+  left: 0;
+  min-width: 220px;
+  margin: 8px 0 0;
+  padding: 8px 0;
+  list-style: none;
+
+  background: #1c1c1e;        /* тёмная тема, как у корзины */
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  z-index: 100;               /* чтобы меню не перекрыли карточки */
+}
+
+/* Пункты меню */
+.dropdown__menu a {
+  display: block;
+  padding: 10px 16px;
+  color: #f5f1eb;
+  text-decoration: none;
+   border-radius: 20px;      
+  transition: background 0.15s;
+}
+
+.dropdown__menu a:hover {
+  background: #d32f2f;  
+  border-radius: 20px;      /* акцентный цвет */
+}
+
+/* Открытие по ховеру (десктоп) */
+@media (hover: hover) {
+  .dropdown:hover .dropdown__menu,
+  .dropdown:focus-within .dropdown__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* Класс .open для мобильных (открываем кликом) */
+.dropdown.open .dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Стрелочка, чтобы было понятно, что меню раскрывается */
+.dropdown__toggle::after {
+  content: " ▾";
+  font-size: 0.8em;
+}
+
 
 // --------Секция КАТАЛОГ-----
 .catalog{
-    background-image: url(./img/catalog.jpg);
+    background: linear-gradient(90deg, #000000,#272021,#37322f);
     background-size: cover;
     background-repeat: no-repeat;
+   
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -133,7 +277,7 @@ html {
     align-items: center;
 }
 .catalog__basket{
-        padding: 10px 28px;
+        padding: 1px 8px;
         background-color: #c73a3a; /* тёплый красно‑оранжевый, «аппетитный» */
         font-size: 18px;
         border-radius: 80px;
@@ -152,11 +296,11 @@ html {
   background-color: #a18e8e;
 }
 .catalog__basket {
-  position: fixed;          /* главное свойство: фиксирует элемент относительно окна */
-  bottom: 460px;
-    right: 70px;          /* отступ справа */
-  z-index: 999;             /* чтобы была поверх остального контента */
+ position: fixed;
+  top: 20px; // отступ сверху
+  right: 20px;         /* чтобы была поверх остального контента */
   display: flex;
+  z-index: 999;
   align-items: center;
   gap: 8px;
   color: #333;
@@ -169,7 +313,7 @@ html {
 }
 
 .basket-icon {
-  font-size: 24px;
+  font-size: 14px;
 }
 
 .basket-count {
@@ -246,8 +390,8 @@ html {
 
 .catalog__meat{
     font-weight: 600;
-    font-size: 64px;
-    max-width: 900px;
+    font-size: clamp(28px, 5vw, 56px);
+    max-width: 1200px;
     width: 100%;
     color: rgba(214, 214, 214, 0.5);
     font-family: "Grechen Fuemen", cursive;
@@ -287,6 +431,10 @@ html {
     font-weight: 300;
     font-size: 14px;
     color: rgba(214, 214, 214, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 .catalog__kg{
     font-weight: 300;
@@ -294,6 +442,33 @@ html {
     font-size: 24px;
     color: rgba(214, 214, 214, 0.5);
 }
+/* СТИЛИ ДЛЯ КНОПКИ ДОБАВИТЬ В КОРЗИНУ С +- */
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 12px;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #d32f2f;
+}
+
+
+.qty-value {
+  min-width: 24px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
 .btn-add-to-cart {
    background-color: #d32f2f; /* тёплый красно‑оранжевый, «аппетитный» */
   color: #ede7e7 ;
@@ -311,3 +486,163 @@ html {
   background: #535854; /* зелёный для «добавлено» */
   transform: scale(0.9);
 }
+/* ------------FOOTER---------*/
+/* ===== FOOTER ===== */
+
+.footer {
+ 
+  background: #2b2b2b;           /* тёмный фон — контраст с каталогом */
+  color: #f5f5f5;
+  padding: 48px 20px 0;
+}
+
+.footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;               /* чтобы на мобильном колонки вставали друг под другом */
+  gap: 40px;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer__brand {
+  max-width: 320px;
+}
+
+.footer__logo {
+  font-family: 'Grechen Fuemen', cursive;   /* тот же шрифт, что в шапке */
+  font-size: 32px;
+  color: #E5484D;
+  text-decoration: none;
+}
+
+.footer__slogan {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer__title {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+  color: #E5484D;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__list a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__list a:hover {
+  color: #E5484D;
+}
+
+.footer__phone {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__phone:hover {
+  color: #E5484D;
+}
+
+.footer__note {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.footer__icon {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.footer__icon-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.footer__icon-item:hover {
+  transform: translateY(-3px);
+}
+
+.footer__icon--tg { background: #2AABEE; }
+.footer__icon--vk { background: #0077FF; }
+
+.footer__bottom {
+  padding: 20px;
+  text-align: center;
+}
+
+.footer__copy {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* ===== Адаптив ===== */
+
+@media (max-width: 768px) {
+  .footer__inner {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .footer__brand {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .footer__contacts {
+    text-align: center;
+  }
+
+  .footer__icon {
+    justify-content: center;
+  }
+
+  .footer__phone {
+    font-size: 20px;
+  }
+}
+
+
+
+/* ===== Адаптив ===== */
+@media (max-width: 900px) {
+  .basket {
+    grid-template-columns: 1fr;     /* в столбец на планшете/телефоне */
+  }
+}
+@import 'tablet';
+@import 'mobil';
