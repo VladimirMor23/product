@@ -314,13 +314,12 @@
     gap: 15px;
   }
   .catalog__img {
-    height: 259px;
+    height: 200px;
     background-size: cover;
     background-repeat: no-repeat;
     max-width: 329px;
     width: 100%;
     border-radius: 4px;
-    height: 100%;
   }
   .catalog__kg {
     font-weight: 300;
@@ -617,10 +616,6 @@ svg a:hover {
 }
 .main__link:active {
   transform: translateY(0);
-}
-
-.main__titletext {
-  font-family: "Grechen Fuemen", cursive;
 }
 
 .main__palece {
@@ -1173,13 +1168,12 @@ svg a:hover {
     gap: 15px;
   }
   .catalog__img {
-    height: 259px;
+    height: 200px;
     background-size: cover;
     background-repeat: no-repeat;
     max-width: 329px;
     width: 100%;
     border-radius: 4px;
-    height: 100%;
   }
   .catalog__kg {
     font-weight: 300;
