@@ -140,6 +140,14 @@
   border-top: 1px dashed #c9c4bc;
 }
 
+.cart-weight-total {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  padding-top: 12px;
+  border-top: 1px dashed #c9c4bc;
+}
+
 /* Форма */
 #order-form {
   display: flex;
@@ -202,7 +210,6 @@
 /* ===== Доставка ===== */
 .delivery {
   max-width: 1200px;
-  margin: 60px auto 0;
   padding: 40px 20px;
   background: #fff8f5; /* тёплый светлый фон — в тему мясного магазина */
   border-radius: 16px;
@@ -298,9 +305,48 @@
   }
   .catalog {
     display: flex;
-    display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .catalog__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  .catalog__img {
+    height: 259px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 329px;
+    width: 100%;
+    border-radius: 4px;
+    height: 100%;
+  }
+  .catalog__kg {
+    font-weight: 300;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
+  }
+  .catalog__price {
+    font-weight: 300;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
+  }
+  .catalog__title {
+    font-size: 16px;
+  }
+  .catalog__inform {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .catalog__info {
+    font-weight: 300;
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
   }
   .header__icon {
     position: absolute;
@@ -345,14 +391,40 @@
     width: 70px;
     position: relative;
     top: -90px;
-    left: 200px;
+    left: 190px;
+  }
+  .catalog__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
   .catalog__card {
     max-width: 249px;
     width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .catalog__img {
-    height: 259px;
+    height: 159px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 329px;
+    width: 100%;
+    border-radius: 4px;
+  }
+  .catalog__kg {
+    font-weight: 300;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
+  }
+  .catalog__price {
+    font-weight: 300;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
   }
   .catalog__title {
     font-size: 16px;
@@ -362,6 +434,32 @@
     font-size: 12px;
     display: flex;
     align-items: flex-start;
+    gap: 10px;
+  }
+  .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 12px;
+  }
+  .qty-value {
+    min-width: 14px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+  }
+  .btn-add-to-cart {
+    background-color: #d32f2f;
+    color: #ede7e7;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 19px;
+    border: 2px solid rgb(241, 241, 241);
+    border: none;
+    padding: 4px 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
   }
 }
 @media (max-width: 1400px) {
@@ -402,12 +500,6 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-.grechen-fuemen-regular {
-  font-family: "Grechen Fuemen", cursive;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .header {
@@ -643,9 +735,13 @@ svg a:hover {
 }
 
 .catalog {
-  background: linear-gradient(90deg, #000000, #272021, #37322f);
+  background: #f5f1eb;
   background-size: cover;
   background-repeat: no-repeat;
+  padding-top: 40px;
+}
+
+.catalog__grid {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -721,7 +817,13 @@ svg a:hover {
 .catalog__card {
   position: relative;
   overflow: hidden; /* самое важное: обрезает всё, что вылезает */
-  border-radius: 30px;
+  border-radius: 3px;
+  background-color: #f8f7f7;
+}
+
+.catalog__inform {
+  font-size: 16px;
+  font-weight: 400;
 }
 
 /* Сама картинка — задаём размер, чтобы сетка не прыгала */
@@ -736,8 +838,9 @@ svg a:hover {
 }
 
 /* При наведении на карточку — увеличиваем только картинку */
-.catalog__card:hover .catalog__img {
-  transform: scale(1.05); /* увеличение на 15% */
+.catalog__card:hover {
+  outline: 2px solid rgba(231, 50, 56, 0.25);
+  border-radius: 2px; /* увеличение на 15% */
 }
 
 .basket-icon {
@@ -777,14 +880,13 @@ svg a:hover {
   font-size: clamp(28px, 5vw, 56px);
   max-width: 1200px;
   width: 100%;
-  color: rgba(214, 214, 214, 0.5);
-  font-family: "Grechen Fuemen", cursive;
+  color: #d32f2f;
+  padding-bottom: 10px;
 }
 
 .catalog__card {
   max-width: 329px;
   width: 100%;
-  grid-column: span 4;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -798,27 +900,27 @@ svg a:hover {
   max-width: 329px;
   width: 100%;
   height: 329px;
-  border-radius: 40px;
+  border-radius: 4px;
 }
 
 .catalog__title {
   font-weight: 300;
   font-size: 24px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color: rgba(214, 214, 214, 0.5);
+  color: #444;
 }
 
 .catalog__price {
   font-weight: 300;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 24px;
-  color: rgba(214, 214, 214, 0.5);
+  color: #444;
 }
 
 .catalog__info {
   font-weight: 300;
   font-size: 14px;
-  color: rgba(214, 214, 214, 0.5);
+  color: #444;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -829,7 +931,7 @@ svg a:hover {
   font-weight: 300;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 24px;
-  color: rgba(214, 214, 214, 0.5);
+  color: #444;
 }
 
 /* СТИЛИ ДЛЯ КНОПКИ ДОБАВИТЬ В КОРЗИНУ С +- */
@@ -855,7 +957,7 @@ svg a:hover {
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  color: white;
+  color: #444;
 }
 
 .btn-add-to-cart {
@@ -1062,9 +1164,48 @@ svg a:hover {
   }
   .catalog {
     display: flex;
-    display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .catalog__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  .catalog__img {
+    height: 259px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 329px;
+    width: 100%;
+    border-radius: 4px;
+    height: 100%;
+  }
+  .catalog__kg {
+    font-weight: 300;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
+  }
+  .catalog__price {
+    font-weight: 300;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
+  }
+  .catalog__title {
+    font-size: 16px;
+  }
+  .catalog__inform {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .catalog__info {
+    font-weight: 300;
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
   }
   .header__icon {
     position: absolute;
@@ -1109,14 +1250,40 @@ svg a:hover {
     width: 70px;
     position: relative;
     top: -90px;
-    left: 200px;
+    left: 190px;
+  }
+  .catalog__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
   .catalog__card {
     max-width: 249px;
     width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .catalog__img {
-    height: 259px;
+    height: 159px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 329px;
+    width: 100%;
+    border-radius: 4px;
+  }
+  .catalog__kg {
+    font-weight: 300;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
+  }
+  .catalog__price {
+    font-weight: 300;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
   }
   .catalog__title {
     font-size: 16px;
@@ -1126,5 +1293,31 @@ svg a:hover {
     font-size: 12px;
     display: flex;
     align-items: flex-start;
+    gap: 10px;
+  }
+  .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 12px;
+  }
+  .qty-value {
+    min-width: 14px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+  }
+  .btn-add-to-cart {
+    background-color: #d32f2f;
+    color: #ede7e7;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 19px;
+    border: 2px solid rgb(241, 241, 241);
+    border: none;
+    padding: 4px 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
   }
 }/*# sourceMappingURL=slyle.css.map */

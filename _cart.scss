@@ -138,6 +138,14 @@
   padding-top: 12px;
   border-top: 1px dashed #c9c4bc;
 }
+.cart-weight-total{
+   font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  padding-top: 12px;
+  border-top: 1px dashed #c9c4bc;
+  
+}
 
 /* Форма */
 #order-form {
@@ -201,7 +209,7 @@
 
 .delivery {
   max-width: 1200px;
-  margin: 60px auto 0;
+  
   padding: 40px 20px;
   background: #fff8f5;                 /* тёплый светлый фон — в тему мясного магазина */
   border-radius: 16px;
